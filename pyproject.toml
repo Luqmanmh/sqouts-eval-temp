@@ -1,0 +1,32 @@
+[project]
+name = "eval-bot-fastapi"
+version = "0.1.0"
+description = "Eval Bot web platform: FastAPI backend + React frontend"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    # API
+    "fastapi>=0.165.0",
+    "uvicorn[standard]>=0.54.0",
+    "python-multipart>=0.0.34",
+    "sqlalchemy[asyncio]>=2.0",
+    "asyncpg>=0.32.0",
+    "psycopg2-binary>=2.9.13",
+    "alembic>=1.20.1",
+    "bcrypt>=5.0.0",
+    "pyjwt>=2.10",
+    "dotenv>=0.9.9",
+    # worker + call runner
+    "celery[redis]>=5.6.3",
+    "aiortc>=1.15.0",
+    "av>=17.1.0",
+    "numpy>=2.5.3",
+    "httpx>=0.28.1",
+    "cartesia>=4.2.0",
+    "elevenlabs>=2.70.0",
+    "langchain-anthropic>=1.7.5",
+    "langgraph>=1.2.12",
+]
+
+[tool.uv]
+package = false

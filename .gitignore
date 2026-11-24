@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[oc]
+.venv
+
+# env
+.env
+
+# run files (recordings, transcripts, logs)
+files/
+*.wav
+*.dump

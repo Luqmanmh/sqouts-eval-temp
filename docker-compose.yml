@@ -1,0 +1,33 @@
+name: eval-bot
+# Same project name as ../eval-bot, so "make db" here and there manage the same
+# eval-bot-db / eval-bot-redis containers and the same data volumes.
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: eval-bot-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: eval_bot
+    ports:
+      - "5436:5432"          # 5432 is your Windows Postgres, 5435 is wawan's
+    volumes:
+      - eval_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d eval_bot"]
+      interval: 5s
+      retries: 10
+  redis:
+    image: redis:7-alpine
+    container_name: eval-bot-redis
+    restart: unless-stopped
+    ports:
+      - "6380:6379"          # Sqouts' Redis already has 6379 on the host
+    volumes:
+      - eval_redis_data:/data
+
+volumes:
+  eval_pg_data:
+  eval_redis_data:

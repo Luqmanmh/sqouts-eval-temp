@@ -1,0 +1,219 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* WawancaraAI / SQOUTS brand palette — indigo primary, electric-purple accent */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(244 34% 20%);        /* deep indigo navy #242448 */
+
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(244 34% 20%);
+
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(244 34% 20%);
+
+  --primary: hsl(248 39% 45%);           /* brand indigo #54489C */
+  --primary-foreground: hsl(0 0% 100%);
+
+  --secondary: hsl(248 38% 96%);         /* light lavender surface #ECEBF5 */
+  --secondary-foreground: hsl(248 39% 38%);
+
+  --muted: hsl(248 38% 96%);
+  --muted-foreground: hsl(244 16% 50%);  /* #6C6C90 */
+
+  --accent: hsl(250 60% 96%);
+  --accent-foreground: hsl(248 39% 40%);
+
+  --destructive: hsl(0 60% 52%);         /* #C04848 */
+  --destructive-foreground: hsl(0 0% 100%);
+
+  --border: hsl(248 28% 90%);            /* #E2E0EF */
+  --input: hsl(248 28% 90%);
+  --ring: hsl(258 100% 60%);             /* electric purple #7733FF focus ring */
+
+  --radius: 0.625rem;
+  --chart-1: hsl(248 39% 50%);           /* indigo */
+  --chart-2: hsl(180 45% 49%);           /* teal #48B4B4 */
+  --chart-3: hsl(140 26% 52%);           /* green */
+  --chart-4: hsl(42 61% 50%);            /* amber #CC9C30 */
+  --chart-5: hsl(0 60% 52%);             /* red #C04848 */
+
+  /* Secondary body text: descriptions, evidence quotes, durations (#4A4A6E) */
+  --subtle-foreground: hsl(240 20% 36%);
+
+  /* Status badges: soft fill + dark text, used for run status and verdicts */
+  --success: hsl(149 80% 90%);           /* Pass, link active  #D1FAE5 */
+  --success-foreground: hsl(161 94% 24%);    /* #047857 */
+  --warning: hsl(48 96% 89%);            /* Timed out, mixed results, STT differs  #FEF3C7 */
+  --warning-foreground: hsl(23 83% 31%);     /* #92400E */
+  --danger: hsl(0 93% 94%);              /* Fail, run failed  #FEE2E2 */
+  --danger-foreground: hsl(0 74% 42%);       /* #B91C1C */
+  --neutral: hsl(240 17% 95%);           /* Done, cancelled  #F1F1F5 */
+  --neutral-foreground: hsl(240 20% 36%);    /* #4A4A6E */
+
+  /* Indigo sidebar or navbar with white text, as in the Sqouts console */
+  --sidebar: hsl(248 39% 45%);
+  --sidebar-foreground: hsl(0 0% 100%);
+  --sidebar-primary: hsl(0 0% 100%);
+  --sidebar-primary-foreground: hsl(248 39% 45%);
+  --sidebar-accent: hsl(0 0% 100% / 15%);    /* active nav item */
+  --sidebar-accent-foreground: hsl(0 0% 100%);
+  --sidebar-border: hsl(0 0% 100% / 15%);
+  --sidebar-ring: hsl(258 100% 60%);
+}
+
+.dark {
+  /* Deep indigo-navy dark theme (mirrors the sidebar fills) */
+  --background: hsl(244 35% 12%);        /* ~#15132B */
+  --foreground: hsl(248 30% 92%);
+
+  --card: hsl(244 32% 16%);              /* ~#1E1B33 */
+  --card-foreground: hsl(248 30% 92%);
+
+  --popover: hsl(244 32% 16%);
+  --popover-foreground: hsl(248 30% 92%);
+
+  --primary: hsl(252 75% 72%);           /* brighter indigo-purple for dark */
+  --primary-foreground: hsl(244 40% 14%);
+
+  --secondary: hsl(244 25% 22%);
+  --secondary-foreground: hsl(248 30% 92%);
+
+  --muted: hsl(244 25% 22%);
+  --muted-foreground: hsl(246 20% 68%);
+
+  --accent: hsl(244 25% 24%);
+  --accent-foreground: hsl(248 30% 92%);
+
+  --destructive: hsl(0 58% 56%);
+  --destructive-foreground: hsl(0 0% 100%);
+
+  --border: hsl(244 22% 26%);
+  --input: hsl(244 22% 26%);
+  --ring: hsl(258 90% 70%);
+  --chart-1: hsl(252 70% 70%);           /* indigo */
+  --chart-2: hsl(180 45% 55%);           /* teal */
+  --chart-3: hsl(140 30% 58%);           /* green */
+  --chart-4: hsl(42 65% 60%);            /* amber */
+  --chart-5: hsl(0 60% 62%);             /* red */
+
+  --subtle-foreground: hsl(246 22% 78%);
+
+  --success: hsl(161 60% 18%);
+  --success-foreground: hsl(149 70% 75%);
+  --warning: hsl(32 60% 20%);
+  --warning-foreground: hsl(45 90% 72%);
+  --danger: hsl(0 55% 22%);
+  --danger-foreground: hsl(0 90% 80%);
+  --neutral: hsl(244 25% 22%);
+  --neutral-foreground: hsl(248 30% 85%);
+
+  --sidebar: hsl(244 32% 16%);
+  --sidebar-foreground: hsl(248 30% 92%);
+  --sidebar-primary: hsl(252 75% 72%);
+  --sidebar-primary-foreground: hsl(244 40% 14%);
+  --sidebar-accent: hsl(244 25% 24%);
+  --sidebar-accent-foreground: hsl(248 30% 92%);
+  --sidebar-border: hsl(244 22% 26%);
+  --sidebar-ring: hsl(258 90% 70%);
+}
+
+@theme inline {
+  --font-sans: 'Geist Variable', sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-subtle-foreground: var(--subtle-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-neutral: var(--neutral);
+  --color-neutral-foreground: var(--neutral-foreground);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    @apply border-border outline-ring/50;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    /* Inter tabular/contextual niceties for a clean grotesque look */
+    font-feature-settings: "cv11", "ss01";
+    font-optical-sizing: auto;
+    letter-spacing: -0.006em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    /* Tighter tracking on headings, Mercor-style */
+    letter-spacing: -0.02em;
+    color: var(--foreground);
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* Interviewer equaliser (LiveInterviewStage). The AI has no video track, so the
+   bars are the only cue that it — and not the candidate — is speaking. */
+@keyframes eq-bar {
+  0%, 100% { transform: scaleY(0.35); }
+  50%      { transform: scaleY(1); }
+}
+
+@utility animate-eq-bar {
+  animation: eq-bar 900ms ease-in-out infinite;
+}
